@@ -1,0 +1,9 @@
+/venv/
+**/.env
+**/__pycache__/
+**/downloads/
+**/dist/
+*.pyc
+.vscode/
+data.json
+note.txt
