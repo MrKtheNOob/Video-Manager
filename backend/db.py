@@ -8,19 +8,13 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 from download import VideoMetaData
 
 load_dotenv()
-# Database credentials
-USERNAME = os.getenv("DB_USER")
-PASSWORD = os.getenv("PASSWORD")
-HOST = os.getenv("DB_HOST")
-PORT = os.getenv("DB_PORT")
-DATABASE_NAME = "videos"
 
 
 Base = declarative_base()
 
 
 class Video(Base):
-    __tablename__ = "videos"
+    __tablename__ = "video"
     id = Column(Integer, primary_key=True, index=True)
     link = Column(String)
     title = Column(String)
@@ -32,7 +26,7 @@ class Video(Base):
 
 
 # Create the engine
-DATABASE_URI = f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE_NAME}"
+DATABASE_URI = os.getenv("DATABASE_URL")
 engine = create_engine(DATABASE_URI)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # The engine is created, but a connection isn't established until a task is run.
