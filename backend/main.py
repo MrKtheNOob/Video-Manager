@@ -102,5 +102,5 @@ async def proxy_image(url: str):
 
 
 # Path to Vite build directory
-react_build_dir = os.path.join("../frontend/", "dist/")
-app.mount("/", StaticFiles(directory="../frontend/dist", html=True), name="frontend")
+react_build_dir = os.path.join("./dist")
+app.mount("/", StaticFiles(directory=react_build_dir, html=True), name="frontend")
